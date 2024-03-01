@@ -23,8 +23,21 @@ def encrypt(plaintext, key):
     return ciphertext
         
         
-def decrypt(plaintext, key):
-    
+def decrypt(ciphertext, key):
+    plaintext = ""
+    for letter in ciphertext:                           
+                                                        
+        letter = letter.lower()
+        if not letter == " ":
+            index = letters.find(letter)
+            if index == -1:
+                plaintext + letter
+            else:
+                new_index = index - key
+                if new_index < 0:
+                    new_index += 26
+                plaintext += letters[new_index]
+    return plaintext
     
 print("Do you want to Encrypt the data or Decrypt the data? ")
 user_input = input("e/d: ").lower()
